@@ -1,0 +1,29 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Local environment and secrets
+.env
+.env.*
+.venv/
+venv/
+
+# macOS files
+.DS_Store
+
+# Generated project data
+chroma_db/
+chroma_db_bilingual/
+data_xml/
+.deepeval/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
