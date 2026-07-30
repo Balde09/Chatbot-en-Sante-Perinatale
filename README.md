@@ -1,5 +1,18 @@
 # Chatbot en santé périnatale
 
+<div align="center">
+
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![LangChain](https://img.shields.io/badge/LangChain-0.3+-green.svg)](https://python.langchain.com/)
+[![Gradio](https://img.shields.io/badge/Gradio-4.x-orange.svg)](https://www.gradio.app/)
+[![Chroma](https://img.shields.io/badge/Chroma-0.5+-purple.svg)](https://www.trychroma.com/)
+[![Ollama](https://img.shields.io/badge/Ollama-local%20LLM-black.svg)](https://ollama.com/)
+[![python-dotenv](https://img.shields.io/badge/python--dotenv-1.x-lightgrey.svg)](https://pypi.org/project/python-dotenv/)
+[![Unstructured](https://img.shields.io/badge/Unstructured-0.15+-red.svg)](https://unstructured.io/)
+[![lxml](https://img.shields.io/badge/lxml-5.x-blueviolet.svg)](https://lxml.de/)
+
+</div>
+
 Assistant conversationnel bilingue pour la périnatalité, propulsé par une recherche augmentée de type RAG et une interface Gradio élégante.
 
 Le projet utilise :
