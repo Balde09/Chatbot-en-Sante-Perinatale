@@ -512,7 +512,7 @@ Mon rôle est de vous fournir des informations et des ressources fiables sur la 
 🏥 **Vous rendre à l'urgence** - Consultez les temps d'attente des salles d'urgence de la Capitale-Nationale : [indexsante.ca/urgences](https://www.indexsante.ca/urgences/#Capitale-Nationale)
         """)
     
-    chatbot = gr.Chatbot(type="tuples", height=400)
+    chatbot = gr.Chatbot(type="messages", height=400)
     
     with gr.Row():
         msg = gr.Textbox(
@@ -532,7 +532,7 @@ Mon rôle est de vous fournir des informations et des ressources fiables sur la 
             # Ne rien faire si le message est vide - retourner l'historique tel quel
             return "", history
         # Message valide - l'ajouter à l'historique
-        return "", history + [[user_input, None]]
+        return "", history + [{"role": "user", "content": user_input}]
     
     def bot_response(history):
         """Générer la réponse du bot (seulement si l'historique n'est pas vide)"""
@@ -540,14 +540,13 @@ Mon rôle est de vous fournir des informations et des ressources fiables sur la 
         if not history or len(history) == 0:
             return history
         
-        # Vérifier que le dernier message a bien un élément utilisateur
-        if not history[-1] or len(history[-1]) == 0:
+        # Vérifier que le dernier message est bien un message utilisateur
+        if not history[-1] or history[-1].get("role") != "user":
             return history
             
-        user_input = history[-1][0]
+        user_input = history[-1]["content"]
         bot_reply = respond(user_input, history)
-        history[-1][1] = bot_reply
-        return history
+        return history + [{"role": "assistant", "content": bot_reply}]
     
     def update_button_state(text):
         """Active/désactive le bouton selon si le texte est vide"""
@@ -562,7 +561,7 @@ Mon rôle est de vous fournir des informations et des ressources fiables sur la 
     submit.click(user_message, [msg, chatbot], [msg, chatbot], queue=False).then(
         bot_response, chatbot, chatbot
     )
-    clear.click(lambda: None, None, chatbot, queue=False)
+    clear.click(lambda: [], None, chatbot, queue=False)
 
 if __name__ == "__main__":
     demo.launch(share=True)

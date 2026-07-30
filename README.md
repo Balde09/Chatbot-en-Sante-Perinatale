@@ -55,9 +55,9 @@ pip install -r requirements.txt
 
 ## Structure du projet
 
-- `chatbot.py` : lance l’assistant Gradio et interroge la base Chroma
-- `ingest_xml_database.py` : ingestion XML avec chargement via `UnstructuredXMLLoader`
-- `ingest_xml_fast.py` : ingestion plus rapide basée sur `xml.etree.ElementTree`
+- `src/chatbot.py` : lance l’assistant Gradio et interroge la base Chroma
+- `src/ingest_xml_database.py` : ingestion XML avec chargement via `UnstructuredXMLLoader`
+- `src/ingest_xml_fast.py` : ingestion plus rapide basée sur `xml.etree.ElementTree`
 - `data_xml/` : corpus XML source
 - `chroma_db_bilingual/` : base vectorielle persistée utilisée par le chatbot
 
@@ -66,13 +66,13 @@ pip install -r requirements.txt
 Si vous voulez reconstruire la base vectorielle, lancez l’un des deux scripts suivants :
 
 ```bash
-python ingest_xml_fast.py
+python src/ingest_xml_fast.py
 ```
 
 ou, pour une ingestion plus structurée :
 
 ```bash
-python ingest_xml_database.py
+python src/ingest_xml_database.py
 ```
 
 Les deux scripts écrivent dans `chroma_db_bilingual/` avec la collection `perinatalite_bilingual`.
@@ -82,10 +82,14 @@ Les deux scripts écrivent dans `chroma_db_bilingual/` avec la collection `perin
 Une fois la base vectorielle prête, démarrez l’application :
 
 ```bash
-python chatbot.py
+python src/chatbot.py
 ```
 
 L’interface Gradio s’ouvre dans le navigateur. Le script démarre avec `share=True`, donc Gradio peut aussi générer un lien de partage public si nécessaire.
+
+## Organisation Source
+
+Le code applicatif vit désormais dans `src/` pour suivre une structure Python plus standard. Les fichiers à la racine servent uniquement à la documentation et à la configuration du projet.
 
 ## Notes
 
